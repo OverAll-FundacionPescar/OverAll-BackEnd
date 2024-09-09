@@ -1,0 +1,377 @@
+/*Fuente de Logo*/
+@import url('https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Piazzolla:ital,opsz,wght@0,8..30,100..900;1,8..30,100..900&family=Stardos+Stencil:wght@400;700&display=swap');
+
+.stardos-stencil-regular {
+    font-family: "Stardos Stencil", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+.piazzolla{
+    font-family: 'Piazzolla';
+    font-style: normal;
+    font-weight: 100 900;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    min-width: 700px;
+}
+/* Regla para que siempre tenga el 100 del contenedor osea el figure */
+img{
+    width: 100%;
+    height: 100%;
+}
+a{
+    font-family: "Stardos Stencil";
+}
+
+
+nav{
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    color: white;
+    background-color: #243A69;
+}
+.logo{
+    display: flex;
+}
+.logo a{
+    align-self: center;
+    font-size: 30px;
+    margin: 5px;
+    color: white;
+    text-decoration: none;
+}
+.logo a:hover{
+    color: aqua;
+}
+.logo img{
+    border-radius:100px;
+    width: 70px;
+    padding: 3px;
+}
+.user{
+    
+    display: flex;
+    justify-content:center;
+    
+}
+.user a{
+    align-self: center;
+    width: 30px;
+    height: 30px;
+    margin: 15px;
+    border: none;
+}
+.user_menu{ 
+    display: none;
+    position: absolute;
+    top: 60px; left: 90%;
+}
+.menu_list{
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+    border: 1px solid grey;
+    background-color: white;
+    
+}
+.menu_list ul {
+    margin: 3px;
+}
+.menu_list ul a{
+    color: black;
+    text-decoration: none;
+}
+/*NAV*/
+/* HEADER */
+.Header{
+    
+    
+    height: 600px;
+    
+    background-image: url(assets/FondoHeader.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+}
+
+.Header .buscador{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    
+}
+.buscador label{
+    margin-top: 130px;
+    margin-bottom: 15px;
+    
+    font-size: 1.5rem;
+    font-family: 'Piazzolla';
+}
+.buscador input{
+    border: grey solid 2px;
+    padding: 10px;
+    border-radius: 20px;
+    min-width: 450px;
+    height: 40px;
+}
+.filtros{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}
+
+/* HEADER */
+
+/* Main */
+.Main article h2{
+    font-family: 'Piazzolla';
+    text-align: center;
+    margin-bottom: 100px;
+    font-size: 2.3rem;
+    text-decoration: underline;
+    color: white;
+
+}
+.Recomendados{
+    background-color: #24508F;
+    padding: 100px;
+}
+.Recomendados section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.recomendados-card{
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 2px solid gray;
+    width: 420px;
+    
+    border-radius: 22px;
+}
+
+.recomendados-content{
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    padding-bottom: 20px;
+    
+}
+.recomendados-content, .recomendados-mainpic{
+    width: 90%;
+    padding-top: 20px;
+    
+}
+.recomendados-mainpic img{
+    border-radius: 8px;
+
+}
+.profile img{
+    border-radius: 100px;
+    
+
+}
+.recomendados-profile img{
+    width: 60px;
+    border-radius: 30px;
+    border: 1px grey solid;
+}
+.recomendados-title{
+    font-size: 1.2rem;
+}
+.recomendados-sub{
+    color: grey;
+    padding-left: 15px;
+}
+.testimonios-title{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-left: 160px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: start;
+}
+.testimonios-title h3{
+    font-size: 2.5rem;
+}
+.testimonios-title p{
+    font-size: 1.5rem;
+}
+
+
+.opcontainer section{
+    display: flex;
+    flex-wrap: wrap;
+    
+    justify-content: center;
+    gap: 35px;
+}
+.opiniones{
+    text-align: center;
+    background-color: #FFF8F8;
+    border-radius: 25px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items: center;
+    max-width: 300px;
+    height: fit-content;
+    border: 1px solid gray;
+    gap: 20px;
+}
+.opiniones h6{
+    font-size: 1.5rem;
+}
+.opiniones figure{
+    width: 80px;
+}
+
+.about{
+    margin-top: 120px;
+    display: flex;
+}
+.about figure{
+    width: 1300px;
+}
+
+.about-content{
+    margin-top: 10px;
+    padding-left: 50px;
+    display: flex;
+    align-items:start;
+    flex-direction: column;
+    gap: 30px;
+}
+.about-content h3{
+    font-family: 'Piazzolla';
+    text-align: center;
+    font-size: 2.3rem;
+    text-decoration: underline;
+}
+.about-content p{
+    font-size: 1.6rem;
+}
+
+
+.team-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 35px;
+}
+.team-container img{
+    width: 252px;
+    height: 272px;
+    border: 5px solid #025959;
+    border-radius: 13px;
+
+}
+.team-container figcaption{
+    text-align: center;
+    font-size: 1.4rem;
+    font-family: 'Piazzolla';
+}
+
+/* Main */
+
+/* Footer */
+footer{
+    
+    background-color: #24508F;
+    padding:20px 0;
+    color: #fff;
+    width: 100%;
+    
+    
+}
+
+.contenedor{
+    
+    display:flex;
+    justify-content: space-between;
+    padding: 50px;
+}
+
+.information{
+    width: 497px;
+    
+}
+
+
+.information h3 {
+    display : flex;
+    justify-content: center;
+    border-bottom: 1px solid #f80606;
+    padding-bottom: 10px;
+}
+.redes h3{
+    display : flex;
+    justify-content: center;
+    border-bottom: 1px solid #f80606;
+    padding-bottom: 10px;
+}
+.contact h3 {
+    display : flex;
+    justify-content: center;
+    border-bottom: 1px solid #f80606;
+    padding-bottom: 10px;
+}
+
+.information ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.information li {
+    margin: 10px 0;
+}
+
+.information a {
+    color: #fff;
+    text-decoration: none;
+}
+.inf-title, .redes-title, .contact-title{
+    border-bottom: 1px solid white;
+    width: fit-content;
+}
+
+.redes{
+    width:448px;
+    
+}
+.redes-icon{
+    color: #fff;
+}
+.contact{
+    width:448px;
+    
+}
+.copyright {
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+/* Footer */
