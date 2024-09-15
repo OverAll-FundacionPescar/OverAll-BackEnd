@@ -14,9 +14,7 @@ const userSchema = new mongoose.Schema({
         isRequired: true
     },
     edad: Integer,
-    especialidad: {
-        //Revison
-    },
+    especialidad: String,
     zona: {
         type:String
     },
@@ -30,8 +28,8 @@ const userSchema = new mongoose.Schema({
     },
     contactos:{
         //Revision
-    },
-    puntaje: Integer
+    }
+    
 })
 
 
