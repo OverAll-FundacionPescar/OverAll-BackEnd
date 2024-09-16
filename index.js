@@ -4,6 +4,11 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import { engine } from "express-handlebars";
 import dbConnect from "./config/database.js";
+
+//borrar
+import * as us from "./controllers/user.js"
+
+
 //Configuramos dotenv para reconocer archivos .env
 dotenv.config()
 
@@ -40,9 +45,10 @@ app.listen(PORT, HOST, () => console.log(`Servidor corriendo en: ${HOST}:${PORT}
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-app.use(express.static("./public/main_resources"))
+app.use(express.static("./public"))
 
-
+app.post("/user", us.createUser);
+app.get("/user", us.getUser);
 
 
 app.get("/", (req, resp) =>{

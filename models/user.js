@@ -13,24 +13,25 @@ const userSchema = new mongoose.Schema({
         maxLength: 20,
         isRequired: true
     },
-    edad: Integer,
+    edad: Number,
     especialidad: String,
     zona: {
         type:String
     },
-    Pass:{
+    password:{
         type:String,
-        minLength: 8,
+        minLength: 3,
         isRequired: true
     },
     imagenes:{
         //revision
     },
     contactos:{
-        //Revision
+        
     }
     
 })
 
 
 const User = mongoose.model("users", userSchema);
+export default User;
