@@ -55,7 +55,8 @@ app.post("/user", us.createUser);
 app.get("/user/:id", us.getUser);
 //Traer todos
 app.get("/user/", us.getUser);
-
+app.put("/user/:id", us.updateUser);
+app.delete("/user/:id", us.deleteUser);
 //renderiza el main
 app.get("/", (req, resp) =>{
     resp.render("layouts/main")

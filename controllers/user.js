@@ -31,7 +31,7 @@ export const createUser  = async (request, response) => {
 export function getUser(request, response){
     const {id} = request.params;
     //validacion de si hay o no id para buscar uno o muchos usuarios
-    
+
     if(id){
         console.log("Solicitando usuarios: ")
         User.findById(id)
@@ -60,11 +60,36 @@ export function getUser(request, response){
     
 }
 //Actualizar datos de un usuario
-export function updateUser(request, response){
+export function updateUser({params:{id}, body}, response){
+    //Se desestructura de los parametros del request el ID y el BODY
 
+    //Se le da el ID como _id y se le setea el body
+    User.updateOne({_id:id}, {$set:body})
+    .then((resultado) => response.json({
+        title:"Actualizacion de usuario: " ,
+        status: "Exitosa!"
+    }))
+    .catch((error) => console.log("Error al actualizar: " + error))
+    
 }
 
 //Borrar usuario
-export function deleteUser(request, response){
+export function deleteUser({params:{id}}, response){
+    //Mensaje para indicar el inicio de la funcion
+    console.log(`Borrando usuario: ${id}` );
+
+    
+    User.deleteOne({_id:id})
+    .then(() => response.json({
+        title: "Borrando usuario",
+        status: "Existosa!"
+    }))
+    .catch((err) => {
+        console.log(`Error borrando usuario ${id}`);
+        response.json({
+            title: "Borrando usuario",
+            status: "Error!"
+        })
+    })
 
 }
