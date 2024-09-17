@@ -5,8 +5,8 @@ import dotenv from "dotenv";
 import { engine } from "express-handlebars";
 import dbConnect from "./config/database.js";
 
-//borrar
-import * as us from "./controllers/user.js"
+//Router de usuarios
+import usr from "./routers/users.js"
 
 
 //Configuramos dotenv para reconocer archivos .env
@@ -48,23 +48,19 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.static("./public"))
 
 
-//enviarlo a un router
-//Crear
-app.post("/user", us.createUser);
-//Traer unico usuario
-app.get("/user/:id", us.getUser);
-//Traer todos
-app.get("/user/", us.getUser);
-app.put("/user/:id", us.updateUser);
-app.delete("/user/:id", us.deleteUser);
+
+
+
 //renderiza el main
 app.get("/", (req, resp) =>{
     resp.render("layouts/main")
     }
 )
 
+//Routers
+app.use("/user", usr)
 //Manejo de rutas
-// app.use("/", )
+
 // app.use("/login",)
 // app.use("/signin",)
 // app.use("/profile",)

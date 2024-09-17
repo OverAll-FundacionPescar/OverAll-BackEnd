@@ -10,7 +10,7 @@ export const createUser  = async (request, response) => {
 
     //Recibimos y hasheamos password
     const { pass } = request.body;
-
+    console.log(pass)
     //Hasheamos dando contraseña y veces a hashear, especificandole que espere
     const hashedPass = await bcrypt.hash(pass, 10)
     
@@ -29,6 +29,7 @@ export const createUser  = async (request, response) => {
 
 //Traer datos de usuario o usuarios
 export function getUser(request, response){
+    console.log("Trayendo user")
     const {id} = request.params;
     //validacion de si hay o no id para buscar uno o muchos usuarios
 
@@ -86,6 +87,7 @@ export function deleteUser({params:{id}}, response){
     }))
     .catch((err) => {
         console.log(`Error borrando usuario ${id}`);
+        console.log(err);
         response.json({
             title: "Borrando usuario",
             status: "Error!"
