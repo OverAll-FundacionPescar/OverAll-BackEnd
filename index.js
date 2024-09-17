@@ -47,13 +47,20 @@ app.use(express.urlencoded({extended:true}))
 
 app.use(express.static("./public"))
 
+
+//enviarlo a un router
+//Crear
 app.post("/user", us.createUser);
-app.get("/user", us.getUser);
+//Traer unico usuario
+app.get("/user/:id", us.getUser);
+//Traer todos
+app.get("/user/", us.getUser);
 
-
+//renderiza el main
 app.get("/", (req, resp) =>{
     resp.render("layouts/main")
-} )
+    }
+)
 
 //Manejo de rutas
 // app.use("/", )

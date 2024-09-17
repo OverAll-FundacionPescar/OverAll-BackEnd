@@ -29,25 +29,41 @@ export const createUser  = async (request, response) => {
 
 //Traer datos de usuario o usuarios
 export function getUser(request, response){
-    console.log("Solicitando usuarios: ");
+    const {id} = request.params;
+    //validacion de si hay o no id para buscar uno o muchos usuarios
+    if(id){
+        console.log("Solicitando unico usuario: ")
+        User.findById(id)
+        .then((resultado) => {
+            if(resultado){
+                console.log("usuarios encontrados: " + resultado)
+            } else {
+                console.log("no se han encontrado usuarios")
+            }
+            response.json(resultado)
+        })
+        .catch((error) => console.log("Ha ocurrido un error buscando usuarios: " +error))
+    } else {
+        console.log("Solicitando usuarios: " + request.params.id);
+        User.find()
+        .then((resultado) => {
+            if(resultado){
+                console.log("usuarios encontrados: " + resultado)
+            } else {
+                console.log("no se han encontrado usuarios")
+            }
+            response.json(resultado)
+        })
+        .catch((error) => console.log("Ha ocurrido un error buscando usuarios: " +error))
+    }
     
-    User.find()
-    .then((resultado) => {
-        if(resultado){
-            console.log("usuarios encontrados: " + resultado)
-        } else {
-            console.log("no se han encontrado usuarios")
-        }
-        response.json(resultado)
-    })
-    .catch((error) => console.log("Ha ocurrido un error buscando usuarios: " +error))
 }
 //Actualizar datos de un usuario
-function updateUser(request, response){
+export function updateUser(request, response){
 
 }
 
 //Borrar usuario
-function deleteUser(request, response){
+export function deleteUser(request, response){
 
 }
