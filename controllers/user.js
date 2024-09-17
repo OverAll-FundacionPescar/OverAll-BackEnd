@@ -31,8 +31,9 @@ export const createUser  = async (request, response) => {
 export function getUser(request, response){
     const {id} = request.params;
     //validacion de si hay o no id para buscar uno o muchos usuarios
+    
     if(id){
-        console.log("Solicitando unico usuario: ")
+        console.log("Solicitando usuarios: ")
         User.findById(id)
         .then((resultado) => {
             if(resultado){
@@ -44,7 +45,7 @@ export function getUser(request, response){
         })
         .catch((error) => console.log("Ha ocurrido un error buscando usuarios: " +error))
     } else {
-        console.log("Solicitando usuarios: " + request.params.id);
+        console.log("Solicitando usuario: " + request.params.id);
         User.find()
         .then((resultado) => {
             if(resultado){
