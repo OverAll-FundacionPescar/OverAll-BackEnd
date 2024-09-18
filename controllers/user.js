@@ -9,10 +9,10 @@ export const createUser  = async (request, response) => {
 
 
     //Recibimos y hasheamos password
-    const { pass } = request.body;
-    console.log(pass)
+    const { password } = request.body;
+    
     //Hasheamos dando contraseña y veces a hashear, especificandole que espere
-    const hashedPass = await bcrypt.hash(pass, 10)
+    const hashedPass = await bcrypt.hash(password, 10)
     
     //Guardamos usuario
     //Especificando que use todos los datos del body pero que al password le asigne hashedPass
@@ -34,7 +34,7 @@ export function getUser(request, response){
     //validacion de si hay o no id para buscar uno o muchos usuarios
 
     if(id){
-        console.log("Solicitando usuarios: ")
+        console.log("Solicitando usuario: + request.params._id")
         User.findById(id)
         .then((resultado) => {
             if(resultado){
@@ -46,7 +46,7 @@ export function getUser(request, response){
         })
         .catch((error) => console.log("Ha ocurrido un error buscando usuarios: " +error))
     } else {
-        console.log("Solicitando usuario: " + request.params.id);
+        console.log("Solicitando usuarios: ");
         User.find()
         .then((resultado) => {
             if(resultado){

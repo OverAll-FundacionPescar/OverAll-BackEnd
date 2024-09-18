@@ -24,8 +24,8 @@ const PORT = process.env.PORT || 4301
 const config = {
     partialsDir: "./views/partials",
     layoutsDir: "./views/layouts",
-    defaultLayout: "main.hbs",
-    extname: "hbs"
+    extname: "hbs",
+    defaultLayout: "main" 
 }
 
 app.engine("hbs", engine(config))
@@ -38,8 +38,7 @@ app.use(morgan('dev'));
 
 
 
-//Ponemos al servidor a escuchar en el puerto y host dado
-app.listen(PORT, HOST, () => console.log(`Servidor corriendo en: ${HOST}:${PORT}`))
+
 
 //Configuramos middleware json y urlencode
 app.use(express.json())
@@ -53,9 +52,13 @@ app.use(express.static("./public"))
 
 //renderiza el main
 app.get("/", (req, resp) =>{
-    resp.render("layouts/main")
+    resp.render("index", {estilos:"/main_resources/styles/styles.css"})
     }
 )
+
+app.get("/signin", (req, resp) => {
+    resp.render("signin", {estilos:"/signin_resources/styles_registro.css"})
+})
 
 //Routers
 app.use("/user", usr)
@@ -67,3 +70,6 @@ app.use("/user", usr)
 // app.use("/faq",)
 // app.use("/busqueda",)
 // app.use("/config",)
+
+//Ponemos al servidor a escuchar en el puerto y host dado
+app.listen(PORT, HOST, () => console.log(`Servidor corriendo en: ${HOST}:${PORT}`))

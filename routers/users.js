@@ -15,4 +15,6 @@ userRouter.put("/:id", us.updateUser);
 //Borrar usuario
 userRouter.delete("/:id", us.deleteUser);
 
+
+
 export default userRouter;
