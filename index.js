@@ -7,7 +7,7 @@ import dbConnect from "./config/database.js";
 
 //Router de usuarios
 import usr from "./routers/users.js"
-
+import aut from "./routers/auth.js"
 
 //Configuramos dotenv para reconocer archivos .env
 dotenv.config()
@@ -37,9 +37,6 @@ app.use(morgan('dev'));
 
 
 
-
-
-
 //Configuramos middleware json y urlencode
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -56,12 +53,12 @@ app.get("/", (req, resp) =>{
     }
 )
 
-app.get("/signin", (req, resp) => {
-    resp.render("signin", {estilos:"/signin_resources/styles_registro.css"})
-})
+//renderiza el form de registro
+
 
 //Routers
 app.use("/user", usr)
+app.use("/signin", aut)
 //Manejo de rutas
 
 // app.use("/login",)
