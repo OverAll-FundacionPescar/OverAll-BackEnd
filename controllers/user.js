@@ -13,7 +13,7 @@ export const createUser  = async (request, response) => {
     
     //Hasheamos dando contraseña y veces a hashear, especificandole que espere
     const hashedPass = await bcrypt.hash(password, 10)
-    
+    console.log(hashedPass)
     //Guardamos usuario
     //Especificando que use todos los datos del body pero que al password le asigne hashedPass
     const newUser = User({...request.body, password:hashedPass});

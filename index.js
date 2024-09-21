@@ -4,7 +4,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import { engine } from "express-handlebars";
 import dbConnect from "./config/database.js";
-
+import cookieParser from "cookie-parser";
 //Router de usuarios
 import usr from "./routers/users.js"
 import aut from "./routers/auth.js"
@@ -40,7 +40,7 @@ app.use(morgan('dev'));
 //Configuramos middleware json y urlencode
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-
+app.use(cookieParser());
 app.use(express.static("./public"))
 
 
@@ -49,7 +49,10 @@ app.use(express.static("./public"))
 
 //renderiza el main
 app.get("/", (req, resp) =>{
-    resp.render("index", {estilos:"/main_resources/styles/styles.css"})
+    const user = req.cookies.user
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    console.log(user)
+    resp.render("index", {estilos:"/main_resources/styles/styles.css", user:user})
     }
 )
 

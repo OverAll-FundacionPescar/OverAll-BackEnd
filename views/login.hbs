@@ -1,7 +1,7 @@
 
 <body>
     <div class="container">
-        <form action="#" class="form-content ">
+        <form action="/signin/login" method="post" class="form-content ">
             <h1>Bienvenido a OverAll</h1>
             <div class="input-group">
 
@@ -9,13 +9,13 @@
                 <label for="correo" class="">Correo Electronico</label>
                 <div class="input-field">
                     <i class="fa-solid fa-user"></i>
-                    <input type="text" id="correo" class="input-field fa-user" placeholder="Correo electronico">
+                    <input type="email" name="email" id="email" class="input-field fa-user" placeholder="Correo electronico">
                 </div>
 
                 <label for="pas">Contraseña</label>
                 <div class="input-field">
                     <i class="fa-solid fa-lock"></i>
-                    <input type="password" id="pas" class="input-field" placeholder="Contraseña">
+                    <input type="password" name="password" id="password" class="input-field" placeholder="Contraseña">
                 </div>
                 <div class="btn-field">
                 <button >Iniciar Sesion</button>
