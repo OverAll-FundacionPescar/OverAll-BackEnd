@@ -8,7 +8,7 @@ import cookieParser from "cookie-parser";
 //Router de usuarios
 import usr from "./routers/users.js"
 import aut from "./routers/auth.js"
-
+import cors from "cors";
 //Configuramos dotenv para reconocer archivos .env
 dotenv.config()
 
@@ -38,6 +38,7 @@ app.use(morgan('dev'));
 
 
 //Configuramos middleware json y urlencode
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser());
@@ -49,10 +50,13 @@ app.use(express.static("./public"))
 
 //renderiza el main
 app.get("/", (req, resp) =>{
-    const user = req.cookies.user
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    console.log(user)
-    resp.render("index", {estilos:"/main_resources/styles/styles.css", user:user})
+    
+    console.log("----------Pag de inicio----------")
+    console.log("")
+    console.log("")
+    console.log("")
+    
+    resp.render("index", {estilos:"/main_resources/styles/styles.css"})
     }
 )
 

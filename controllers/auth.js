@@ -1,21 +1,33 @@
 //Controlador para devolver vistas y manejar creacion de usuarios
 import User from "../models/user.js";
-
-import { authenticate } from "../utils/auth.js";
+import jwt from "jsonwebtoken"
+import { authenticate} from "../utils/auth.js";
 import bcrypt from "bcrypt"
+import {verify} from "../utils/verify.js";
+
+
 
 //Renderiza registro
-export const signinPage = (req, resp) => {
-    console.log(req.body.user)
+export const signinPage = async (req, resp) => {
+    
+    //MANDAR A UTILS
+    const token = req.cookies.token
+    verify(req, resp, token)
+    
+    console.log(token)
+    console.log("-----------------")
     resp.render("signin", {estilos:"/signin_resources/styles_registro.css"});
 }
 export const loginForm = async (req, resp) => {
     resp.render("login", {estilos: "/login_resources/login.css"})
 }
 
+
+
+
+
+
 export const register = async (req, resp) => {
-
-
     //Extraemos los datos
     const {user, email, location, edad, password1, password2} = req.body
     
@@ -43,19 +55,16 @@ envia el formulario y hace un post, el sistema verifica si existe una coincidenc
 encriptada y entonces devuelve el token 
 */
 export const getLogin = async (req, resp) => {
-    console.log("iniciando")
-    let payload;
+    console.log("iniciando")   
 
     //Extraemos los datos
+    console.log(req.body)
     const {email, password} = req.body;
-    
     //Buscamos al usuario que coincida con el email
-    console.log("PASSWORDs DADA POR EL USER")
-    
     const data = await User.findOne({email:email});
     console.log("---------------------------------------")
     console.log("PASSWORD DE USUARIO YA GUARDADO")
-    console.log(data.password)
+    
 
     if(data){
         //Si se encuentra usuario se compara la contraseña del user dado con el encriptado
@@ -64,13 +73,26 @@ export const getLogin = async (req, resp) => {
 
         if(isMatch){
             console.log("matchean")
-            payload = {id: data.id}
+
+            const payload = {id: data.id}
+
             console.log("----------Generando TOken--------------")
+            console.log("")
+            console.log("")
+            console.log("")
             const token = await authenticate(payload);
             //devuelve el token al header
-            resp.cookie('Authorization', token);
-            resp.cookie('user', data.user, { maxAge: 3600000 });
+            console.log(token)
+            
+            resp.cookie("token",token)
             resp.redirect("/")
+            
+            console.log("----Se envia token en authorization---")
+            console.log("")
+            console.log("")
+            console.log("")
+            // resp.cookie('user_id', data._id, { maxAge: 3600000 });
+            //
 
         } else {
             resp.json({

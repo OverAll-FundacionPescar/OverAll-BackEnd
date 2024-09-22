@@ -1,6 +1,6 @@
 import * as authContr from "../controllers/auth.js"
 import {Router} from "express"
-import { verificar } from "../utils/auth.js"; 
+ 
 
 
 const authR = Router();
