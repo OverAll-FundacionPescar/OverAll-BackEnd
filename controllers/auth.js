@@ -1,29 +1,16 @@
 //Controlador para devolver vistas y manejar creacion de usuarios
 import User from "../models/user.js";
-import jwt from "jsonwebtoken"
-import { authenticate} from "../utils/auth.js";
 import bcrypt from "bcrypt"
-import {verify} from "../utils/verify.js";
-
+import { authenticate, verify } from "../utils/index.js";
 
 
 //Renderiza registro
 export const signinPage = async (req, resp) => {
-    
-    //MANDAR A UTILS
-    const token = req.cookies.token
-    verify(req, resp, token)
-    
-    console.log(token)
-    console.log("-----------------")
     resp.render("signin", {estilos:"/signin_resources/styles_registro.css"});
 }
 export const loginForm = async (req, resp) => {
     resp.render("login", {estilos: "/login_resources/login.css"})
 }
-
-
-
 
 
 
@@ -47,7 +34,6 @@ export const register = async (req, resp) => {
         resp.render("signin", {title: "Error", error: "Un error ha ocurrido, favor de revisar los datos"})
         }
 }
-
 
 /*
 Esta funcion es la encargada de que cuando el usuario
@@ -101,4 +87,10 @@ export const getLogin = async (req, resp) => {
             })
         }
     }
+}
+
+export const logout = async (req, resp) => {
+    console.log("borrando token")
+    resp.clearCookie('token')
+    resp.redirect("/")
 }

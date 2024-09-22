@@ -5,10 +5,14 @@ import dotenv from "dotenv";
 import { engine } from "express-handlebars";
 import dbConnect from "./config/database.js";
 import cookieParser from "cookie-parser";
+import User from "./models/user.js";
+import jwt from "jsonwebtoken"
 //Router de usuarios
 import usr from "./routers/users.js"
 import aut from "./routers/auth.js"
 import cors from "cors";
+import faqr from "./routers/faq.js"
+import profr from "./routers/profiles.js"
 //Configuramos dotenv para reconocer archivos .env
 dotenv.config()
 
@@ -47,25 +51,36 @@ app.use(express.static("./public"))
 
 
 
-
+const SECRETWORD = "overAllAguante";
 //renderiza el main
-app.get("/", (req, resp) =>{
+app.get("/", async (req, resp) => {
     
     console.log("----------Pag de inicio----------")
-    console.log("")
-    console.log("")
-    console.log("")
+    //Ejecutamos un try para qe intente recuperar el token y que si no lo tiene no se corte la ejecucion
+    try{
+    const search = req.cookies.token
     
+    if(search){
+        const {id} = jwt.verify(search, SECRETWORD);
+        const resultados = await User.findById({_id:id})
+    
+    resp.render("index", {estilos:"/main_resources/styles/styles.css", user:resultados.user})
+    }
+    } catch(err) {console.log(err)}
+    finally {
     resp.render("index", {estilos:"/main_resources/styles/styles.css"})
     }
+}
 )
 
-//renderiza el form de registro
+
 
 
 //Routers
 app.use("/user", usr)
 app.use("/signin", aut)
+app.use("/faq", faqr)
+app.use("/profile", profr)
 //Manejo de rutas
 
 // app.use("/login",)

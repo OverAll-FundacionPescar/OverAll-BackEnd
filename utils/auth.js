@@ -23,24 +23,20 @@ export const authenticate = async (payload) => {
 
 
 
+//MIDDLEWARE DESPRECIADO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 export const verificar = async (request, response) => {
     console.log("------------VERIFICANDO------------")
-    
-    
     //Toma el header del request y lo chequea
     //divide el valor del encabezado AUTHORIZATION en 2 tomando el espacio en blanco como delimitador y toma el segundo item (token)
     console.log("-----Token extraido----")
     const authHeader = request.header("Authorization")
-    
     console.log("----------")
     console.log("")
     const data = authHeader.split(" ")[1];
     console.log(data)
-    
     console.log(decoded)
     console.log("-------------------")
     console.log("")
-    
     
     //Busca al usuario decodificado
     const decoded = jwt.verify(data, SECRETWORD);
@@ -51,7 +47,6 @@ export const verificar = async (request, response) => {
     //si hay sigue el proceso
     request.user = decoded
     console.log(resultados)
-
     //Si no hay usuario redirige
     next()
 }
