@@ -6,17 +6,22 @@ const SECRETWORD = "overAllAguante";
 
 
 //Esta funcion reemplaza al midleware y no pierde el token
-export const verify = async (req, resp) => { 
-    console.log("verificando...")
-    const token = req.cookies.token
-    if(token){
-        const decoded = jwt.verify(token, SECRETWORD);
-        const resultados = await User.find(decoded)
-        if(!resultados > 0){
-            return resp.render("login", {estilos: "/login_resources/login.css"})
+export const verify = async (req, res) => { 
+    try{
+        const token = req.cookies.token
+        console.log(token)
+        if (!token) {
+            console.log("Reenviando a login")
+            return  res.redirect("signin/login");
         }
-    //si hay sigue el proceso
-    req.user = decoded
-    console.log("todo piola sigue")
-    }
+        console.log("Verificando")
+        const decoded = jwt.verify(token, SECRETWORD);
+        const resultados = await User.find({ _id: decoded._id });
+        console.log(resultados)
+                if (!resultados) {
+                    return  res.redirect("signin/login");
+                } 
+            } catch(err) {
+                console.log(err)
+            }
 }
