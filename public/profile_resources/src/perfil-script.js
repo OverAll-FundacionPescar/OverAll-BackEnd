@@ -19,6 +19,7 @@ function display_menu(){
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Carga script de diplay_menu");
+    
     display_menu();
 })
 

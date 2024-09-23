@@ -10,20 +10,24 @@ const userSchema = new mongoose.Schema({
     email: String,
     edad: Number,
     especialidad: String,
-    localidad: {
-        type:String
-    },
+    localidad: String,
     password:{
         type:String,
         minLength: 3,
         isRequired: true
     },
-    imagenes:{
+    trabajos:{
         //revision
+    },
+    profilefoto:{
+
     },
     contactos:{
         
-    }
+    },
+    descripcion: String,
+    experiencia: String,
+
     
 })
 

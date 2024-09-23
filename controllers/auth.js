@@ -16,15 +16,17 @@ export const loginForm = async (req, resp) => {
 
 export const register = async (req, resp) => {
     //Extraemos los datos
-    const {user, email, location, edad, password1, password2} = req.body
-    
+    const {user, email, localidad, edad, password1, password2} = req.body
+    const edadUser = new Date(edad);
+    const hoy = new Date();
+    const years = hoy.getFullYear() - edadUser.getFullYear(); 
     //Verificamos ambas pass
         if( password1 == password2){
             const securePass = await bcrypt.hash(password1, 10)
         //Creamos usuario y redirigimos exitosamente
             console.log("---------------Contraseñas coinciden, se procede a crear el usuario --------------- ");
 
-            const secureUser = {user, email, location, edad, password:securePass};
+            const secureUser = {user, email, localidad, edad:years, password:securePass};
             const newUser = new User(secureUser)
             
             newUser.save();

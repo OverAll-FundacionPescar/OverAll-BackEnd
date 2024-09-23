@@ -39,10 +39,19 @@ nav{
     color: white;
     background-color: #243A69;
 }
+nav ul{
+    text-decoration: none;
+    list-style: none;
+    color: black;
+    
+}   
+
 .logo{
     display: flex;
 }
 .logo a{
+    font-family: "piazzola";
+    font-weight: bold;
     align-self: center;
     font-size: 30px;
     margin: 5px;
@@ -50,15 +59,15 @@ nav{
     text-decoration: none;
 }
 .logo a:hover{
-    color: #E87A00;
+    color: aqua;
 }
 .logo img{
-    border-radius: 50px;
+    border-radius:100px;
     width: 70px;
-    height: 70px;
     padding: 3px;
 }
 .user{
+    
     display: flex;
     justify-content:center;
     
@@ -70,12 +79,27 @@ nav{
     margin: 15px;
     border: none;
 }
-.user_menu{
+.user_menu{ 
     display: none;
     position: absolute;
-    top: 60px; left: 83%;
+    top: 60px; left: 90%;
 }
-
+.menu_list{
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+    border: 1px solid grey;
+    background-color: white;
+    
+}
+.menu_list li {
+    margin: 3px;
+}
+.menu_list li a{
+    color: black;
+    text-decoration: none;
+}
 
 
 

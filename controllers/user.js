@@ -17,6 +17,7 @@ export const createUser  = async (request, response) => {
     //Guardamos usuario
     //Especificando que use todos los datos del body pero que al password le asigne hashedPass
     const newUser = User({...request.body, password:hashedPass});
+    console.log(request.body)
 
     newUser.save()
     .then((resultado) => response.json(resultado))

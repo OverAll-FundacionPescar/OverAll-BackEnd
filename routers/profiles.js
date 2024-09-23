@@ -5,7 +5,7 @@ const profilesRouter = Router();
 
 profilesRouter.get("/", pr.getProfile)
 
-profilesRouter.post("/")
-
+profilesRouter.get("/:id", pr.getProfileId)
+profilesRouter.get("/edit/:id", pr.getProfileEdit)
 
 export default profilesRouter;

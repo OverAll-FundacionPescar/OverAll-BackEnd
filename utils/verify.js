@@ -12,14 +12,14 @@ export const verify = async (req, res) => {
         console.log(token)
         if (!token) {
             console.log("Reenviando a login")
-            return  res.redirect("signin/login");
+            return  res.redirect("/signin/login");
         }
         console.log("Verificando")
         const decoded = jwt.verify(token, SECRETWORD);
         const resultados = await User.find({ _id: decoded._id });
-        console.log(resultados)
+        
                 if (!resultados) {
-                    return  res.redirect("signin/login");
+                    return  res.redirect("/signin/login");
                 } 
             } catch(err) {
                 console.log(err)

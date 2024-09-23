@@ -7,8 +7,12 @@
     <!--Comienzo de las secciones-->
     <section class="perfil-container"> 
         <div class="perfil1"> <!--seccion de los datos personales del usuario-->
-                <img src="imagenes/mecanico.png" alt="perfil del usuario">
-                <h1 class="nombre-usuario">Luis Alberto Dominguez</h1>
+                <img src="/profile_resources/styles/imagenes/mecanico.png" alt="perfil del usuario">
+                {{#if owner}}
+                
+                <form action="/profile/edit/{{ownprofile}}" method="post"><button>Editar</button></form>
+                {{/if}}
+                <h1 class="nombre-usuario">{{user}}</h1>
                 <div class="puntuacion">
                     <i class="fa-solid fa-star fa-xl"></i>
                     <i class="fa-solid fa-star fa-xl"></i>
@@ -18,16 +22,16 @@
                 </div>
                 <h2 class="datos-personales">Datos Personales</h2>
                 <div class="perfil-info">
-                    <div><i class="fas fa-briefcase"></i><p> Especialidad : Mecanico</p></div>
-                    <div><i class="fa-solid fa-calendar-days"></i><p> Edad: 40 años </p></div>
-                    <div><i class="fas fa-map-marker-alt"></i><p> Provincia: C.A.B.A </p></div>
-                    <div><i class="fas fa-map-marker-alt"></i><p> Localidad : San Cristobal </p></div>
-                    <div><i class="fa-solid fa-business-time"></i><p> Años de experiencia : 10 años</p></div>
+                    <div><i class="fas fa-briefcase"></i><p> Especialidad:{{especialidad}}</p></div>
+                    <div><i class="fa-solid fa-calendar-days"></i><p> Edad: {{edad}}</p></div>
+                    <div><i class="fas fa-map-marker-alt"></i><p> Zona: {{localidad}} </p></div>
+                    
+
                 </div>
                 <h2 class="datos-contacto">Datos de Contacto</h2>
                 <div class="perfil-contact">
-                <div><i class="fa-solid fa-mobile-screen-button"></i><p>+ 54 9 11 2365-8952</p></div>
-                <div><i class="fa-solid fa-envelope"></i><p>luisdominguez@gmail.com</p></div>
+                <div><i class="fa-solid fa-mobile-screen-button"></i><p>{{telefono}}</p></div>
+                <div><i class="fa-solid fa-envelope"></i><p>{{email}}</p></div>
                 </div>
         </div>
 
@@ -55,12 +59,12 @@
                     </ul>
                 </div>
                 <div class="content">
-                    <img src="imagenes/trabajo1.jpg" alt="">
-                    <img src="imagenes/trabajo2.jpg" alt="">
-                    <img src="imagenes/trabajo3.jpg" alt="">
-                    <img src="imagenes/trabajo4.jpg" alt="">
-                    <img src="imagenes/trabajo5.jpg" alt="">
-                    <img src="imagenes/trabajo6.jpg" alt="">
+                    <img src="/profile_resources/styles/imagenes/trabajo1.jpg" alt="">
+                    <img src="/profile_resources/styles/imagenes/trabajo2.jpg" alt="">
+                    <img src="/profile_resources/styles/imagenes/trabajo3.jpg" alt="">
+                    <img src="/profile_resources/styles/imagenes/trabajo4.jpg" alt="">
+                    <img src="/profile_resources/styles/imagenes/trabajo5.jpg" alt="">
+                    <img src="/profile_resources/styles/imagenes/trabajo6.jpg" alt="">
                 </div>
                 <div class="content">
                     <h2>Estudios</h2>
@@ -98,7 +102,7 @@
         <div class="comentarios">
         <article class="card-profesional">
             <figure class="img-profesional">
-                <img src="imagenes/Fulanito_opinion.jpg" alt="foto-especialista">
+                <img src="/profile_rersources/styles/imagenes/Fulanito_opinion.jpg" alt="foto-especialista">
             </figure>
 
             <div class="conteiner-info">
@@ -118,7 +122,7 @@
         </article>
         <article class="card-profesional">
             <figure class="img-profesional">
-                <img src="imagenes/Roberto_opinion.jpg" alt="foto-especialista">
+                <img src="/profile_rersources/styles/imagenes/Roberto_opinion.jpg" alt="foto-especialista">
             </figure>
 
             <div class="conteiner-info">
@@ -140,7 +144,7 @@
 
         <article class="card-profesional">
             <figure class="img-profesional">
-                <img src="imagenes/silvia_opinion.jpg" alt="foto-especialista">
+                <img src="profile_rersources/styles/imagenes/silvia_opinion.jpg" alt="foto-especialista">
             </figure>
 
             <div class="conteiner-info">
@@ -161,7 +165,7 @@
         </article>
         <article class="card-profesional">
             <figure class="img-profesional">
-                <img src="imagenes/icono.jpeg" alt="foto-especialista">
+                <img src="/profile_rersources/styles/imagenes/icono.jpeg" alt="foto-especialista">
             </figure>
 
             <div class="conteiner-info">
@@ -190,9 +194,8 @@
 
     {{>footer}}
     
-    <script type="module" src="profile_resources/perfil-script.js" ></script>
-    <script
-    src="https://kit.fontawesome.com/81581fb069.js"
-    crossorigin="anonymous"
+    <script type="module" src="/profile_resources/src/perfil-script.js" ></script>
+    
+    <script src="https://kit.fontawesome.com/81581fb069.js"crossorigin="anonymous"
 ></script>
 </body>

@@ -1,7 +1,7 @@
 <nav>
         <div class="logo">
             <figure>
-                <img src="main_resources/styles/assets/logo_overall.png" alt="Logo">
+                <img src="/main_resources/styles/assets/logo_overall.png" alt="Logo">
             </figure>
             <a class="stardos-stencil-regular" href="#index.html">OverAll</a>
         </div>
@@ -11,8 +11,8 @@
             <div class="user_menu">
                 <ul class="menu_list">
                     {{#if user}}
-                    <li><a href="signin/login">{{user}}</a></li>
-                    <li><a href="signin/logout">Cerrar Sesion</a></li>
+                    <li><a href="/profile/{{ownprofile}}">{{user}}</a></li>
+                    <li><a href="/signin/logout">Cerrar Sesion</a></li>
                     {{else}}
                     <li><a href="signin/login">Iniciar sesión</a></li>
                     <li><a href="/signin">Registrarse</a></li>
