@@ -1,4 +1,4 @@
 import { authenticate } from "./auth.js";
-import {verify} from "./verify.js";
+import {verify, search} from "./verify.js";
 
-export {authenticate, verify}
+export {authenticate, verify, search}
